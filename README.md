@@ -20,15 +20,16 @@ commands below, and each stage writes a SHA-256 manifest.
 1. [Installation](#installation)
 2. [Data](#data)
 3. [Benchmark your own model (Python API)](#benchmark-your-own-model-python-api)
-4. [Quick start](#quick-start)
-5. [Pipeline and commands](#pipeline-and-commands)
-6. [Outputs](#outputs)
-7. [Reproducibility](#reproducibility)
-8. [Repository structure](#repository-structure)
-9. [Testing](#testing)
-10. [Manuscript (Earthquake Spectra)](#manuscript-earthquake-spectra)
-11. [Data and code availability (manuscript text)](#data-and-code-availability)
-12. [Citation and licence](#citation-and-licence)
+4. [Interactive explorer app](#interactive-explorer-app)
+5. [Quick start](#quick-start)
+6. [Pipeline and commands](#pipeline-and-commands)
+7. [Outputs](#outputs)
+8. [Reproducibility](#reproducibility)
+9. [Repository structure](#repository-structure)
+10. [Testing](#testing)
+11. [Manuscript (Earthquake Spectra)](#manuscript-earthquake-spectra)
+12. [Data and code availability (manuscript text)](#data-and-code-availability)
+13. [Citation and licence](#citation-and-licence)
 
 ---
 
@@ -170,6 +171,57 @@ of one regime; intervals then use cross-fitted calibration scores, and the
 report says so. External training cannot be verified, so reports from
 `evaluate_predictions()` record the provenance as declared.
 
+## Interactive explorer app
+
+An optional Streamlit app shows the published benchmark and audits prediction
+files. It runs without the PEER flatfiles and without `full.parquet`: it reads
+`results/paper/paper_summary_numbers.json` and `results/paper/tables/*.csv`
+(or the copies packaged with gmpe-bench).
+
+```bash
+pip install -e ".[app]"      # or: pip install "gmpe-bench[app]"
+gmpe-bench app               # opens http://localhost:8501
+```
+
+| Tab | What it shows |
+| --- | --- |
+| Benchmark explorer | Leakage inflation (Random vs Event), equal-information RMSE with 95 % event-clustered bootstrap intervals and paired differences, coverage vs width of every calibrator in the six regimes, MACE |
+| Period & spectral bands | Per-period RMSE, Gaussian coverage and variance components (τ, φS2S, φ0), calibrated coverage and width per period, HSCP simultaneous whole-spectrum vs marginal coverage, Table S1 |
+| Evaluate your predictions | Upload a long-format CSV (`rsn`, `im`, `mu`, `sigma`, optional `scheme`, `fold`); sample template and fold skeleton downloads; schema and frozen-split audit; full `evaluate_predictions()` run when `full.parquet` is present locally |
+
+Options: `gmpe-bench app --port 8502 --host 0.0.0.0 --data path/to/processed --headless`.
+
+**Hosted vs local.** PEER data cannot be redistributed, so a hosted app has no
+ground-motion targets. There, an uploaded file is checked against the frozen
+splits: the split file's fingerprint, fold disjointness, valid RSNs and IM names,
+`sigma > 0`, duplicates, units, train-fit rows, and coverage of each fold's
+calibration and test records. The app then shows the code to run the full
+evaluation locally. On a machine with the curated profile, the same upload is
+scored with `gmpe_bench.evaluate_predictions()` (audited metrics, bootstrap
+intervals, HSCP and event-clustered intervals).
+
+### Deploying the app
+
+The repository root holds everything a host needs: `app.py` (entrypoint),
+`requirements.txt` (app-only dependencies), `.streamlit/config.toml`
+(200 MB upload limit) and a `Dockerfile`. `app.py` imports the package from
+`src/`, so hosts do not need the full scientific stack.
+
+- **Streamlit Community Cloud.** At share.streamlit.io choose *Create app*, select
+  this repository and branch, set the main file to `app.py` and deploy.
+  `requirements.txt` is installed automatically.
+- **Hugging Face Spaces.** Hugging Face now runs Streamlit apps through its
+  Docker SDK. Create a Space with the *Docker* SDK, push this repository to it,
+  and replace the Space's `README.md` with `deploy/huggingface/README.md`. Its
+  header sets `sdk: docker` and `app_port: 8501`. The `Dockerfile` builds the
+  app; no PEER data are copied (`.dockerignore` excludes flatfiles, parquet and
+  pickles).
+- **Any container host.** `docker build -t gmpe-bench-app . && docker run -p 8501:8501 gmpe-bench-app`
+
+After a new `gmpe-bench paper` run, refresh the packaged copies with
+`python -c "from gmpe_bench.app.data import write_assets; write_assets('.')"`;
+`tests/test_app.py` fails if they drift from `results/paper`.
+
 ## Quick start
 
 ```bash
@@ -189,6 +241,7 @@ stages and print the gate summaries used during development.
 | Phase | Command | Script | What it does |
 | --- | --- | --- | --- |
 | 0 | `gmpe-bench selftest`, `gmpe-bench info` | — | Check Python, dependencies, write access; show version and paths |
+| — | `gmpe-bench app` | `app.py` | Optional Streamlit explorer of the published results and upload audit |
 | 1 | `gmpe-bench build` | `scripts/00_build_data.py` | Rules R1–R12: schema mapping, −999 sentinels, H/V join, RotD50 only, usable-period masking at T > 1/LUF, quality flags, CL1/CL2 classes, ln(V/H), ZTOR/Z1.0/Z2.5 fills with flags; profiles `full` and `sp23` |
 | 2 | `gmpe-bench split` | `scripts/01_make_splits.py` | Seven split schemes with a 25 % calibration hold-out carved from each training fold; leakage audit (event/station overlap, disjointness, completeness) |
 | 3 | `gmpe-bench baselines` | `scripts/02_run_baselines.py` | ASK14, BSSA14, CB14, CY14 via `pygmm` (bias term from `train_fit`) and a crossed mixed-effects GMM; τ, φS2S, φ0 decomposition |
@@ -292,9 +345,12 @@ gmpe-bench/
 │  ├─ reporting/    style, inputs, tables, figures, paper manifest
 │  ├─ api.py        BaseGMM, evaluate(), evaluate_predictions(), iter_folds(), BenchmarkReport
 │  ├─ reference/    stored paper benchmarks used for comparison (with dataset fingerprints)
-│  └─ _smoke.py     in-memory synthetic fixture for `gmpe-bench selftest` only
+│  ├─ _smoke.py     in-memory synthetic fixture for `gmpe-bench selftest` only
+│  └─ app/          optional Streamlit explorer: data.py, validation.py, streamlit_app.py,
+│                   assets/ (packaged paper results)
 ├─ scripts/         00_build_data.py … 05_make_paper_artifacts.py
 ├─ tests/           unit and end-to-end tests for every phase
+├─ app.py, requirements.txt, Dockerfile, .streamlit/, deploy/   hosted-app entrypoint and deployment
 ├─ paper/           Earthquake Spectra manuscript (main.tex, supplement.tex, references.bib,
 │                   Wiley USG.cls template files, make_submission.py)
 ├─ data/processed/  generated (not versioned)
@@ -311,7 +367,9 @@ pytest
 The suite covers the data rules, split disjointness and leakage detection, the
 pygmm mapping and units, residual decomposition, the ML pipelines, conformal
 coverage guarantees and independence from test labels, the paper artifacts, and
-the Python API (`tests/test_api.py`). Tests that need the curated NGA-West2
+the Python API (`tests/test_api.py`) and the app's loaders and upload audit
+(`tests/test_app.py`, headless; the page itself is rendered with Streamlit's
+`AppTest` when Streamlit is installed). Tests that need the curated NGA-West2
 profile run when `data/processed/full.parquet` exists and are skipped otherwise.
 
 ## Manuscript (Earthquake Spectra)

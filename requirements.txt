@@ -1,0 +1,8 @@
+# Requirements of the hosted explorer app only (Streamlit Community Cloud, Hugging Face Spaces).
+# app.py imports the package from src/, so the full scientific stack is not needed here.
+# To use gmpe-bench itself:  pip install -e ".[app]"
+streamlit>=1.32,<2.0
+altair>=5.0
+numpy>=1.24,<3.0
+pandas>=2.0,<4.0
+pyarrow>=14.0

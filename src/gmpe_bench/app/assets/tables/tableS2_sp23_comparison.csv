@@ -1,0 +1,13 @@
+Item,Value
+full: records / events / stations,"20,926 / 575 / 4,026"
+sp23: records / events / stations,"16,976 / 309 / 3,615"
+Sedaghati and Pezeshk (2023): records / events / stations,"14,518 / 285 / 2,347"
+RMSE ASK14 (full / sp23),0.842 / 0.816
+RMSE BSSA14 (full / sp23),0.857 / 0.826
+RMSE CB14 (full / sp23),0.863 / 0.812
+RMSE CY14 (full / sp23),0.843 / 0.811
+RMSE Mixed effects (full / sp23),0.907 / 0.859
+RMSE XGBoost (full / sp23),0.743 / 0.746
+RMSE Spectral MLP (full / sp23),0.767 / 0.769
+RMSE Hybrid ASK14+MLP (full / sp23),0.742 / 0.728
+RMSE Hybrid BSSA14+XGB (full / sp23),0.722 / 0.716

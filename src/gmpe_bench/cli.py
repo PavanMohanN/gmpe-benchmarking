@@ -1,4 +1,4 @@
-"""Command line: ``gmpe-bench selftest | info | build | split | baselines | train | conformal | paper``.
+"""Command line: ``gmpe-bench selftest | info | build | split | baselines | train | conformal | paper | app``.
 
 ``selftest`` also runs an installation smoke test on a tiny in-memory synthetic fixture (not NGA-West2).
 """
@@ -264,6 +264,46 @@ def paper(
             typer.echo(f"claim {c.cid} {c.status}: {c.statement} [{c.detail}]")
     if any(n in MAIN_TABLES or n in MAIN_FIGURES for n in art.skipped):
         raise typer.Exit(code=1)
+
+
+APP_INSTALL_HINT = (
+    "The gmpe-bench app needs Streamlit, an optional extra. Install it with:\n\n"
+    "    pip install \"gmpe-bench[app]\"\n\n"
+    "From a source checkout use:  pip install -e \".[app]\""
+)
+
+
+@app.command("app")
+def launch_app(
+    port: int = typer.Option(8501, "--port", help="Port of the local server."),
+    host: str = typer.Option("localhost", "--host", help="Address to bind (0.0.0.0 for a container)."),
+    data: Path = typer.Option(None, "--data", help="Folder with full.parquet and frozen splits "
+                                                   "(default: data/processed)."),
+    headless: bool = typer.Option(False, "--headless", help="Do not open a browser window."),
+) -> None:
+    """Launch the Streamlit explorer of the benchmark results (optional extra: gmpe-bench[app])."""
+    import importlib.util
+    import os
+    import subprocess
+
+    if importlib.util.find_spec("streamlit") is None:
+        typer.echo(APP_INSTALL_HINT, err=True)
+        raise typer.Exit(code=1)
+    script = Path(__file__).with_name("app") / "streamlit_app.py"
+    cmd = [sys.executable, "-m", "streamlit", "run", str(script), "--server.port", str(port),
+           "--server.address", host, "--browser.gatherUsageStats", "false"]
+    if headless:
+        cmd += ["--server.headless", "true"]
+    env = dict(os.environ)
+    env.setdefault("GMPE_BENCH_ROOT", str(Path.cwd()))
+    if data is not None:
+        env["GMPE_BENCH_DATA"] = str(Path(data).resolve())
+    typer.echo(f"Starting the gmpe-bench explorer at http://{host}:{port}  (Ctrl+C to stop)")
+    try:
+        code = subprocess.call(cmd, env=env)
+    except KeyboardInterrupt:
+        code = 0
+    raise typer.Exit(code=code)
 
 
 def main() -> None:

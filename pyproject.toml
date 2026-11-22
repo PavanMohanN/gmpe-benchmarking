@@ -42,4 +42,4 @@ gmpe-bench = "gmpe_bench.cli:app"
 where = ["src"]
 
 [tool.setuptools.package-data]
-gmpe_bench = ["reference/*.json"]
+gmpe_bench = ["reference/*.json", "app/assets/*.json", "app/assets/*.csv.gz", "app/assets/tables/*.csv"]
