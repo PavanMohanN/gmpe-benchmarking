@@ -1,0 +1,21 @@
+cid,statement,status,detail
+C01,Random-split leakage inflates ML skill more than published NGA-West2 skill,PASS,ML min +12.1% vs NGA max -0.4%
+C02,Published NGA-West2 models change by less than 2% between random and event splits,PASS,NGA-West2 range -0.6% to -0.4%
+C03,The lowest Event-split RMSE belongs to a hybrid model,FAIL,best Event model: ASK14 (site)
+C03b,"In every scheme with hybrid results, the lowest RMSE belongs to a hybrid",FAIL,evt: ASK14 (site); stn: XGBoost; reg: ASK14; temp: ASK14 (site); mag: ASK14 (site); cl: ASK14 (site)
+C04,Each hybrid has lower RMSE than its physics parent in every reported scheme,FAIL,hyb-ask/evt: 0.742 vs 0.842; hyb-ask/stn: 0.772 vs 0.846; hyb-ask/reg: 1.052 vs 0.941; hyb-ask/temp: 0.870 vs 0.916; hyb-ask/mag: 0.867 vs 0.801; hyb-ask/cl: 0.814 vs 0.885; hyb-bssa/evt: 0.722 vs 0.857; hyb-bssa/stn: 0.671 vs 0.862; hyb-bssa/reg: 1.108 vs 0.986; hyb-bssa/temp: 0.909 vs 0.973; hyb-bssa/mag: 0.799 vs 0.877; hyb-bssa/cl: 0.810 vs 0.906
+C05,Gaussian 90% intervals undercover for every model under Region and CL1 to CL2,PASS,"{'reg': 0.864, 'cl': 0.879}"
+C06,Split conformal is within 0.02 of nominal under the Event split,PASS,split CP Event coverage 0.903
+C07,HSCP has the smallest mean absolute coverage error across schemes at 90%,FAIL,"{'gauss': 0.082, 'split': 0.053, 'evtcp': 0.044, 'shiftcp': 0.045, 'hscp': 0.058}"
+C07b,HSCP has the smallest mean absolute coverage error across schemes at 95%,FAIL,"{'gauss': 0.07, 'split': 0.042, 'evtcp': 0.031, 'shiftcp': 0.033, 'hscp': 0.04}"
+C08,HSCP worst-scheme coverage is at least split conformal's worst-scheme coverage,FAIL,HSCP worst 0.754 vs split 0.767
+C09,The HSCP simultaneous band covers whole spectra more often than its marginal bands,PASS,evt: 0.892 vs 0.629; stn: 0.911 vs 0.658; reg: 0.640 vs 0.371; temp: 0.818 vs 0.542; mag: 0.945 vs 0.855; cl: 0.702 vs 0.402
+C10,HSCP simultaneous-band coverage is within 0.05 below nominal in every scheme,FAIL,evt: 0.892; stn: 0.911; reg: 0.640; temp: 0.818; mag: 0.945; cl: 0.702
+C11,Spectral smoothing lowers band-width roughness in every scheme,PASS,reduction 50.9\% to 90.0\%
+C12,HSCP coverage varies less across VS30 classes than split conformal,FAIL,VS30 spread HSCP 0.102 vs split 0.081
+C13,HSCP unseen-station coverage is closer to nominal than split conformal,FAIL,unseen: HSCP 0.812 vs split 0.829
+C14,ML Gaussian coverage on cal exceeds coverage on test under the Region split,PASS,hyb-ask: 0.813->0.670; hyb-bssa: 0.871->0.747; mlp: 0.852->0.511; xgb: 0.876->0.667
+C15,Split conformal undercovers by more than 0.02 in at least one shift scheme,PASS,split CP worst shift scheme reg: 0.767
+C16,The uncalibrated Gaussian band has a larger mean coverage error than HSCP,PASS,MACE Gaussian 0.082 vs HSCP 0.058
+C17,Each hybrid has a smaller site-to-site term phi_S2S than its parent at T = 1 s (Event split),PASS,hyb-ask: 0.30 vs 0.48; hyb-bssa: 0.32 vs 0.48
+C18,HSCP is within 0.02 of nominal under the Event split,PASS,HSCP Event coverage 0.901

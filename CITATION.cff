@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software or benchmark, please cite it as below."
+title: "GMPE-Bench: Hierarchical Spectral Conformal Prediction and Leakage-Free Open Benchmark for Ground Motion Models"
+authors:
+  - family-names: Neelamraju
+    given-names: Pavan Mohan
+  - family-names: Raghukanth
+    given-names: S. T. G.
+version: 0.1.0
+license: MIT

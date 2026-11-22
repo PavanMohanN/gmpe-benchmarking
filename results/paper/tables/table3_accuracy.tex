@@ -1,0 +1,27 @@
+\begin{table}[htbp]
+\centering
+\caption{Test RMSE (ln units) by model and split scheme (full profile), averaged over folds and 27 intensity measures.}
+\label{tab:table3_accuracy}
+\small
+\begin{adjustbox}{max width=6.25in}
+\begin{tabular}{lrrrrrr}
+\toprule
+Model & Event & Station & Region & Temporal & Mw $\geq$ 7 & CL1 to CL2 \\
+\midrule
+ASK14 & 0.842 & 0.846 & \textbf{0.941} & 0.916 & 0.801 & 0.885 \\
+BSSA14 & 0.857 & 0.862 & 0.986 & 0.973 & 0.877 & 0.906 \\
+CB14 & 0.863 & 0.869 & 1.045 & 0.997 & 0.985 & 0.960 \\
+CY14 & 0.843 & 0.848 & 0.964 & 0.948 & 0.859 & 0.902 \\
+ASK14 (site) & 0.722 & 0.846 & 0.941 & \textbf{0.860} & \textbf{0.781} & \textbf{0.802} \\
+BSSA14 (site) & 0.745 & 0.862 & 0.986 & 0.920 & 0.852 & 0.864 \\
+Mixed effects & 0.907 & 0.891 & 1.209 & 1.084 & 1.379 & 0.937 \\
+XGBoost & 0.743 & \textbf{0.667} & 1.457 & 0.985 & 1.138 & 0.865 \\
+Spectral MLP & 0.767 & 0.770 & 1.615 & 1.080 & 0.950 & 0.983 \\
+Hybrid ASK14+MLP & 0.742 & 0.772 & 1.052 & 0.870 & 0.867 & 0.814 \\
+Hybrid BSSA14+XGB & \textbf{0.722} & 0.671 & 1.108 & 0.909 & 0.799 & 0.810 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip
+\parbox{6.25in}{\footnotesize Classical models use the train\_fit bias term (ergodic mode). (site) = the same model with train\_fit station terms added (zero for stations unseen in train\_fit), i.e. with the same site information as the machine-learning models. Lowest value per scheme in bold.}
+\end{table}

@@ -1,0 +1,35 @@
+\begin{table}[htbp]
+\centering
+\caption{Conditional coverage at nominal 90\% by magnitude, rupture distance, VS30 class and station status (full profile), pooled over schemes, models and folds.}
+\label{tab:table5_conditional_coverage}
+\small
+\begin{adjustbox}{max width=6.25in}
+\begin{tabular}{lrrrrrr}
+\toprule
+Bin & Records x IMs & Gaussian & Split CP & Event-clustered CP & Shift-weighted CP & HSCP \\
+\midrule
+\multicolumn{7}{l}{\textit{Magnitude}} \\
+Mw $<$ 5 & 7,108,384 & 0.793 & 0.841 & 0.845 & 0.845 & 0.819 \\
+5 $\leq$ Mw $<$ 6.5 & 3,046,240 & 0.822 & 0.857 & 0.868 & 0.863 & 0.854 \\
+Mw $\geq$ 6.5 & 2,572,056 & 0.855 & 0.888 & 0.897 & 0.889 & 0.899 \\
+\midrule
+\multicolumn{7}{l}{\textit{Distance}} \\
+Rrup $<$ 30 km & 1,836,248 & 0.851 & 0.892 & 0.897 & 0.896 & 0.875 \\
+30 $\leq$ Rrup $<$ 100 km & 5,002,136 & 0.815 & 0.858 & 0.865 & 0.863 & 0.846 \\
+Rrup $\geq$ 100 km & 5,888,296 & 0.798 & 0.840 & 0.847 & 0.842 & 0.831 \\
+\midrule
+\multicolumn{7}{l}{\textit{VS30 class (NEHRP)}} \\
+A/B ($\geq$ 760 m/s) & 1,091,712 & 0.783 & 0.828 & 0.832 & 0.831 & 0.808 \\
+C (360-760 m/s) & 7,358,440 & 0.812 & 0.855 & 0.862 & 0.859 & 0.843 \\
+D (180-360 m/s) & 4,166,120 & 0.819 & 0.859 & 0.867 & 0.862 & 0.851 \\
+E ($<$ 180 m/s) & 110,408 & 0.882 & 0.909 & 0.917 & 0.911 & 0.910 \\
+\midrule
+\multicolumn{7}{l}{\textit{Station}} \\
+Seen & 4,700,960 & 0.868 & 0.897 & 0.908 & 0.897 & 0.896 \\
+Unseen & 8,025,720 & 0.780 & 0.829 & 0.834 & 0.835 & 0.812 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip
+\parbox{6.25in}{\footnotesize Seen = station recorded in train\_fit or cal.}
+\end{table}

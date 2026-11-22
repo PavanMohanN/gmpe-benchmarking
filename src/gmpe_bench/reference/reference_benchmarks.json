@@ -1,0 +1,545 @@
+{
+ "source": "results/paper/paper_summary_numbers.json",
+ "profile": "full",
+ "note": "Conformal references are means over the paper's eight models.",
+ "rsn_sha256": {
+  "full": "958d38c6820a60decaf44a88d87144df592cbeb1ac3fe4e0f0ad2e2c102a93f5",
+  "sp23": "1aef219ee597b1e4515c7aca7e0b54194b2835aa7340b427956bcaed8d148b06"
+ },
+ "accuracy": {
+  "cl1_to_cl2": {
+   "ASK14_site": {
+    "rmse": 0.8024300051944502,
+    "lo": 0.7346635052635716,
+    "hi": 0.9061366601413918,
+    "cov90": 0.8788056685976615
+   },
+   "Hybrid_BSSA14_XGB": {
+    "rmse": 0.8102283807022432,
+    "lo": 0.7079399504559577,
+    "hi": 0.908306666832174,
+    "cov90": 0.7918379507153911
+   }
+  },
+  "event_grouped": {
+   "ASK14_site": {
+    "rmse": 0.722394586821917,
+    "lo": 0.6896192053645108,
+    "hi": 0.7564619035674169,
+    "cov90": 0.9046340871326467
+   },
+   "Hybrid_BSSA14_XGB": {
+    "rmse": 0.722023081417133,
+    "lo": 0.6906377441458968,
+    "hi": 0.752955871049998,
+    "cov90": 0.8957392089439217
+   }
+  },
+  "magnitude_holdout": {
+   "ASK14_site": {
+    "rmse": 0.7813568504731064,
+    "lo": 0.6002774342034624,
+    "hi": 0.9348050386553668,
+    "cov90": 0.8928346993169534
+   },
+   "Hybrid_BSSA14_XGB": {
+    "rmse": 0.7991646983453881,
+    "lo": 0.61279480664531,
+    "hi": 0.9994888227877428,
+    "cov90": 0.86792268245287
+   }
+  },
+  "spatial_block": {
+   "ASK14_site": {
+    "rmse": 0.9407046446357005,
+    "lo": 0.9019196368862388,
+    "hi": 0.9798922905694393,
+    "cov90": 0.8603024999203311
+   },
+   "Hybrid_BSSA14_XGB": {
+    "rmse": 1.1077255327938276,
+    "lo": 1.0591929276327225,
+    "hi": 1.1501441681476114,
+    "cov90": 0.7471785172596141
+   }
+  },
+  "station_grouped": {
+   "ASK14_site": {
+    "rmse": 0.8462026875216017,
+    "lo": 0.815464891457593,
+    "hi": 0.8801217747804317,
+    "cov90": 0.8960632170506707
+   },
+   "Hybrid_BSSA14_XGB": {
+    "rmse": 0.671109417163446,
+    "lo": 0.6486000234627566,
+    "hi": 0.6951908962978053,
+    "cov90": 0.9121228501211882
+   }
+  },
+  "temporal": {
+   "ASK14_site": {
+    "rmse": 0.8599171306388201,
+    "lo": 0.7926735653960266,
+    "hi": 0.9449947455571701,
+    "cov90": 0.8482438825426887
+   },
+   "Hybrid_BSSA14_XGB": {
+    "rmse": 0.9094138584146416,
+    "lo": 0.8181249525000003,
+    "hi": 1.0220551171738865,
+    "cov90": 0.8223477613102239
+   }
+  }
+ },
+ "conformal": {
+  "0.90": {
+   "cl1_to_cl2": {
+    "UncalibratedGaussian": {
+     "coverage": 0.8131041084668434,
+     "width": 2.36758120024514,
+     "lo": 0.7789398750276139,
+     "hi": 0.839193394453938,
+     "joint_band_coverage": null
+    },
+    "NaiveSplitConformal": {
+     "coverage": 0.8238147313050633,
+     "width": 2.4619941560626795,
+     "lo": 0.7897190441785255,
+     "hi": 0.8484824846159552,
+     "joint_band_coverage": null
+    },
+    "ClusteredEventConformal": {
+     "coverage": 0.8477606291250463,
+     "width": 2.5891219521010567,
+     "lo": 0.8185074285163892,
+     "hi": 0.8690012190791794,
+     "joint_band_coverage": null
+    },
+    "WeightedShiftConformal": {
+     "coverage": 0.8403945128045381,
+     "width": 2.579470014195459,
+     "lo": 0.8068943429426104,
+     "hi": 0.8636339666639901,
+     "joint_band_coverage": null
+    },
+    "HSCP": {
+     "coverage": 0.8131571506941198,
+     "width": 2.348347739915206,
+     "lo": 0.7792747878148308,
+     "hi": 0.840901480039522,
+     "joint_band_coverage": 0.7022224143894846
+    }
+   },
+   "event_grouped": {
+    "UncalibratedGaussian": {
+     "coverage": 0.8711758745923541,
+     "width": 2.413383714587267,
+     "lo": 0.8592935542871384,
+     "hi": 0.8820689893737477,
+     "joint_band_coverage": null
+    },
+    "NaiveSplitConformal": {
+     "coverage": 0.9027639764256238,
+     "width": 2.6774974159262017,
+     "lo": 0.8916367764428803,
+     "hi": 0.9127739450731074,
+     "joint_band_coverage": null
+    },
+    "ClusteredEventConformal": {
+     "coverage": 0.9103327918258503,
+     "width": 2.7459259217839382,
+     "lo": 0.8998423517302303,
+     "hi": 0.9200360399120029,
+     "joint_band_coverage": null
+    },
+    "WeightedShiftConformal": {
+     "coverage": 0.9017236546571897,
+     "width": 2.657164024435311,
+     "lo": 0.890593916350225,
+     "hi": 0.9113844057776411,
+     "joint_band_coverage": null
+    },
+    "HSCP": {
+     "coverage": 0.9007372911194024,
+     "width": 2.534218533275064,
+     "lo": 0.8895014510645114,
+     "hi": 0.9112803437128423,
+     "joint_band_coverage": 0.8916634054522747
+    }
+   },
+   "magnitude_holdout": {
+    "UncalibratedGaussian": {
+     "coverage": 0.8243011706133664,
+     "width": 2.364898812728602,
+     "lo": 0.7531068592947788,
+     "hi": 0.8995619203649371,
+     "joint_band_coverage": null
+    },
+    "NaiveSplitConformal": {
+     "coverage": 0.8421213372948481,
+     "width": 2.4797488648460204,
+     "lo": 0.7722552279792526,
+     "hi": 0.9097132931285276,
+     "joint_band_coverage": null
+    },
+    "ClusteredEventConformal": {
+     "coverage": 0.867094471862633,
+     "width": 2.7017107820769084,
+     "lo": 0.800168907781149,
+     "hi": 0.9330768360696529,
+     "joint_band_coverage": null
+    },
+    "WeightedShiftConformal": {
+     "coverage": 0.8558834691952438,
+     "width": 2.573239498173856,
+     "lo": 0.7894863642059843,
+     "hi": 0.9178149800156452,
+     "joint_band_coverage": null
+    },
+    "HSCP": {
+     "coverage": 0.968071477975689,
+     "width": 4.89996024514481,
+     "lo": 0.949094721914669,
+     "hi": 0.9933216899629438,
+     "joint_band_coverage": 0.9446117804551539
+    }
+   },
+   "spatial_block": {
+    "UncalibratedGaussian": {
+     "coverage": 0.7178992886264061,
+     "width": 2.3556643713429732,
+     "lo": 0.6980737408180291,
+     "hi": 0.7371178756659674,
+     "joint_band_coverage": null
+    },
+    "NaiveSplitConformal": {
+     "coverage": 0.7673823949469936,
+     "width": 2.685701195960807,
+     "lo": 0.7490136672450985,
+     "hi": 0.7856941674797088,
+     "joint_band_coverage": null
+    },
+    "ClusteredEventConformal": {
+     "coverage": 0.7702032016188107,
+     "width": 2.7101995964239247,
+     "lo": 0.7518063220528289,
+     "hi": 0.7891820797937079,
+     "joint_band_coverage": null
+    },
+    "WeightedShiftConformal": {
+     "coverage": 0.7848446477369524,
+     "width": 2.829853012160796,
+     "lo": 0.7676665244136494,
+     "hi": 0.8028984451029694,
+     "joint_band_coverage": null
+    },
+    "HSCP": {
+     "coverage": 0.7540122485282398,
+     "width": 2.6983702984768794,
+     "lo": 0.7363777309462356,
+     "hi": 0.772003339268638,
+     "joint_band_coverage": 0.6403349568977381
+    }
+   },
+   "station_grouped": {
+    "UncalibratedGaussian": {
+     "coverage": 0.8699103993702648,
+     "width": 2.4006520857300666,
+     "lo": 0.8613598747658926,
+     "hi": 0.8772564824432244,
+     "joint_band_coverage": null
+    },
+    "NaiveSplitConformal": {
+     "coverage": 0.8987389478512755,
+     "width": 2.594984871625502,
+     "lo": 0.8913922372961033,
+     "hi": 0.9050578129934149,
+     "joint_band_coverage": null
+    },
+    "ClusteredEventConformal": {
+     "coverage": 0.9121944988203005,
+     "width": 2.7342227937014294,
+     "lo": 0.9050596568010535,
+     "hi": 0.9181746229179549,
+     "joint_band_coverage": null
+    },
+    "WeightedShiftConformal": {
+     "coverage": 0.8986830719590113,
+     "width": 2.594400521276698,
+     "lo": 0.8913237534377004,
+     "hi": 0.9050326400118259,
+     "joint_band_coverage": null
+    },
+    "HSCP": {
+     "coverage": 0.9104132962492566,
+     "width": 2.713347796946078,
+     "lo": 0.9032249602556048,
+     "hi": 0.9165307881927067,
+     "joint_band_coverage": 0.9106847339456035
+    }
+   },
+   "temporal": {
+    "UncalibratedGaussian": {
+     "coverage": 0.8130667207613254,
+     "width": 2.3985296724994503,
+     "lo": 0.7780146397171471,
+     "hi": 0.8393879632701432,
+     "joint_band_coverage": null
+    },
+    "NaiveSplitConformal": {
+     "coverage": 0.8550536920410059,
+     "width": 2.721961891361203,
+     "lo": 0.8214503231223113,
+     "hi": 0.8782619099339279,
+     "joint_band_coverage": null
+    },
+    "ClusteredEventConformal": {
+     "coverage": 0.872757615754405,
+     "width": 2.8572110195827083,
+     "lo": 0.8412411128494557,
+     "hi": 0.8949791341222388,
+     "joint_band_coverage": null
+    },
+    "WeightedShiftConformal": {
+     "coverage": 0.8511726123650207,
+     "width": 2.685749316932315,
+     "lo": 0.8169917823735895,
+     "hi": 0.8745731670035728,
+     "joint_band_coverage": null
+    },
+    "HSCP": {
+     "coverage": 0.8654246885519878,
+     "width": 2.728617625003114,
+     "lo": 0.8393837556135053,
+     "hi": 0.886210518866776,
+     "joint_band_coverage": 0.8184806428049671
+    }
+   }
+  },
+  "0.95": {
+   "cl1_to_cl2": {
+    "UncalibratedGaussian": {
+     "coverage": 0.8806493421660071,
+     "width": 2.821147004767183,
+     "lo": 0.8525219177839775,
+     "hi": 0.9010835448960303,
+     "joint_band_coverage": null
+    },
+    "NaiveSplitConformal": {
+     "coverage": 0.8958643133103465,
+     "width": 2.995172046230142,
+     "lo": 0.8692946664522145,
+     "hi": 0.9138650959762107,
+     "joint_band_coverage": null
+    },
+    "ClusteredEventConformal": {
+     "coverage": 0.9179608394856793,
+     "width": 3.205214989052914,
+     "lo": 0.8974568085140748,
+     "hi": 0.9318475127247635,
+     "joint_band_coverage": null
+    },
+    "WeightedShiftConformal": {
+     "coverage": 0.9063270882775556,
+     "width": 3.119546832090391,
+     "lo": 0.8817547320869925,
+     "hi": 0.9225245343695118,
+     "joint_band_coverage": null
+    },
+    "HSCP": {
+     "coverage": 0.8858418427808078,
+     "width": 2.890291927387371,
+     "lo": 0.8587889551475801,
+     "hi": 0.9053269739999915,
+     "joint_band_coverage": 0.7810446212383259
+    }
+   },
+   "event_grouped": {
+    "UncalibratedGaussian": {
+     "coverage": 0.9248634927947282,
+     "width": 2.875724066847978,
+     "lo": 0.9153183122497152,
+     "hi": 0.9335964199609866,
+     "joint_band_coverage": null
+    },
+    "NaiveSplitConformal": {
+     "coverage": 0.9500382103539826,
+     "width": 3.2574915376003934,
+     "lo": 0.9416478338181227,
+     "hi": 0.957342243730186,
+     "joint_band_coverage": null
+    },
+    "ClusteredEventConformal": {
+     "coverage": 0.9597326245085227,
+     "width": 3.437591447017617,
+     "lo": 0.9524775898962882,
+     "hi": 0.9660512075293783,
+     "joint_band_coverage": null
+    },
+    "WeightedShiftConformal": {
+     "coverage": 0.9494747247284818,
+     "width": 3.218031720433127,
+     "lo": 0.9415693399805193,
+     "hi": 0.9565662763900568,
+     "joint_band_coverage": null
+    },
+    "HSCP": {
+     "coverage": 0.9496167446113903,
+     "width": 3.1353366333714865,
+     "lo": 0.9416114182880782,
+     "hi": 0.9569693191250661,
+     "joint_band_coverage": 0.9392350102000288
+    }
+   },
+   "magnitude_holdout": {
+    "UncalibratedGaussian": {
+     "coverage": 0.8842437512708423,
+     "width": 2.817950742899958,
+     "lo": 0.8185917339466894,
+     "hi": 0.9463161312751482,
+     "joint_band_coverage": null
+    },
+    "NaiveSplitConformal": {
+     "coverage": 0.9008489275759455,
+     "width": 3.011452366650444,
+     "lo": 0.839558041498722,
+     "hi": 0.9523817095344236,
+     "joint_band_coverage": null
+    },
+    "ClusteredEventConformal": {
+     "coverage": 0.9266359537650446,
+     "width": 3.382802742460396,
+     "lo": 0.8726775521974777,
+     "hi": 0.9730586515623586,
+     "joint_band_coverage": null
+    },
+    "WeightedShiftConformal": {
+     "coverage": 0.930858936937843,
+     "width": 3.379298474345495,
+     "lo": 0.8789592067277736,
+     "hi": 0.9698450293193411,
+     "joint_band_coverage": null
+    },
+    "HSCP": {
+     "coverage": 0.9846057511012415,
+     "width": 6.105834775446513,
+     "lo": 0.9597324606830898,
+     "hi": 0.9974292937402717,
+     "joint_band_coverage": 0.9684571619812583
+    }
+   },
+   "spatial_block": {
+    "UncalibratedGaussian": {
+     "coverage": 0.7892466356517215,
+     "width": 2.8069472273064684,
+     "lo": 0.772337183248643,
+     "hi": 0.8064998383577447,
+     "joint_band_coverage": null
+    },
+    "NaiveSplitConformal": {
+     "coverage": 0.840703451140747,
+     "width": 3.266322622346075,
+     "lo": 0.8261571926443353,
+     "hi": 0.8551239660008269,
+     "joint_band_coverage": null
+    },
+    "ClusteredEventConformal": {
+     "coverage": 0.8560856183998979,
+     "width": 3.4786815913647957,
+     "lo": 0.8423714251062683,
+     "hi": 0.8701414388836992,
+     "joint_band_coverage": null
+    },
+    "WeightedShiftConformal": {
+     "coverage": 0.8616500472765684,
+     "width": 3.555472146207835,
+     "lo": 0.848855065458284,
+     "hi": 0.875975213035277,
+     "joint_band_coverage": null
+    },
+    "HSCP": {
+     "coverage": 0.8443545130310877,
+     "width": 3.6312507886378564,
+     "lo": 0.8289130775205883,
+     "hi": 0.8599945743158172,
+     "joint_band_coverage": 0.7625190558004697
+    }
+   },
+   "station_grouped": {
+    "UncalibratedGaussian": {
+     "coverage": 0.9230646456210756,
+     "width": 2.860553395357354,
+     "lo": 0.916406588511915,
+     "hi": 0.9287220713092028,
+     "joint_band_coverage": null
+    },
+    "NaiveSplitConformal": {
+     "coverage": 0.9488761143164591,
+     "width": 3.163167275497806,
+     "lo": 0.9435827619602923,
+     "hi": 0.953241851160431,
+     "joint_band_coverage": null
+    },
+    "ClusteredEventConformal": {
+     "coverage": 0.9578836658312593,
+     "width": 3.357952633706657,
+     "lo": 0.9529965344793021,
+     "hi": 0.9619077911962026,
+     "joint_band_coverage": null
+    },
+    "WeightedShiftConformal": {
+     "coverage": 0.9488422171253811,
+     "width": 3.161324834075174,
+     "lo": 0.9435638990008144,
+     "hi": 0.9532071982171829,
+     "joint_band_coverage": null
+    },
+    "HSCP": {
+     "coverage": 0.9560520374119413,
+     "width": 3.318687387365454,
+     "lo": 0.9510049051762287,
+     "hi": 0.9602171327162042,
+     "joint_band_coverage": 0.9581916723606765
+    }
+   },
+   "temporal": {
+    "UncalibratedGaussian": {
+     "coverage": 0.8751477271382876,
+     "width": 2.8580243840069457,
+     "lo": 0.8436579670935649,
+     "hi": 0.8979781075612387,
+     "joint_band_coverage": null
+    },
+    "NaiveSplitConformal": {
+     "coverage": 0.9090914555998829,
+     "width": 3.2630492169583882,
+     "lo": 0.8812384472237234,
+     "hi": 0.9281780684284783,
+     "joint_band_coverage": null
+    },
+    "ClusteredEventConformal": {
+     "coverage": 0.9331698400940559,
+     "width": 3.6120804047523887,
+     "lo": 0.9091432501300051,
+     "hi": 0.9495848216982647,
+     "joint_band_coverage": null
+    },
+    "WeightedShiftConformal": {
+     "coverage": 0.9065367720833757,
+     "width": 3.2243962503582937,
+     "lo": 0.8783872202710551,
+     "hi": 0.9257627280100355,
+     "joint_band_coverage": null
+    },
+    "HSCP": {
+     "coverage": 0.9208713755129534,
+     "width": 3.308288644471541,
+     "lo": 0.8977398409276885,
+     "hi": 0.9376326745475557,
+     "joint_band_coverage": 0.8765750547845143
+    }
+   }
+  }
+ }
+}

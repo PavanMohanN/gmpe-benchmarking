@@ -1,0 +1,31 @@
+profile,rule,description,n_before,n_after,removed,n_events,n_stations,note
+full,R1,Read H and V flatfiles,21540,21540,0,600,4151,"H 274 cols, V 276 cols, 21540 V rows"
+full,R2,"Sentinels (-999, blanks) -> missing",21540,21540,0,599,4150,H: 93157 cells replaced; V: 108216 cells replaced
+full,R3,Join H and V on RSN,21540,21540,0,599,4150,21087 records have V values
+full,R4,Lock EQID/SSN keys; keep RotD50 only,21540,21529,11,599,4150,RotD percentile: 50.0: 21529; nan: 11
+full,R5,Mask SA beyond usable period T_max = 1/LUF,21529,21529,0,599,4150,"H: 92907 SA values masked; 55 records without LUF (kept, unmasked); 389 LUF anomalies flagged | V: 92717 SA values masked; 502 records without LUF (kept, unmasked); 0 LUF anomalies flagged"
+full,R6,Drop failed H quality; mask failed V,21529,21158,371,595,4085,"H late P: nan: 16983; D: 3063; ?: 824; Y: 237; ? PT: 160; d: 124; D PT: 34; d PT: 29 | H spectra flag: 0.0: 21395; 1.0: 99; 2.0: 35 | H dropped: late P 'Y' 237, any failure 371 | V values masked for 470 records | late S 'Y' flagged 34"
+full,R7,Drop missing keys or all-missing H targets,21158,20926,232,575,4026,
+full,R8,CL1/CL2 class at CRJB = 5 km,20926,20926,0,575,4026,"source: TYPE (CRjb = 5) column | TYPE raw: C1: 17419; C2 - 0137: 1420; C2 - 0277: 701; C1f - 1186: 159; C2 - 0127: 95; C1f - 1002: 90; C2 - 0283: 77; C1f - 0280: 70 | CRJB missing 1, <0 0, =0 20925, (0,5) 0, >=5 0 | CL1: 18035; CL2: 2891"
+full,R10,ln(V/H) where H and V both usable,20926,20926,0,575,4026,20431 records with V/H
+full,R11,"Fill ZTOR (CY14), Z1.0 (CY14), Z2.5 (CB14) with flags",20926,20926,0,575,4026,ZTOR filled 0; Z1.0 filled 4796; Z2.5 filled 4988; VS30 class codes: 0: 7975; 2a_4b: 6185; 1: 2367; 2a_3a_4b_4c: 1610; 3b_4b_4c: 950; 2a_4b_4c: 657; 3b_4a_4b_4c: 554; 4b_4c: 312 (0 taken as measured)
+full,R9,Profile full: no further filters,20926,20926,0,575,4026,
+full,R12,Freeze full.parquet,20926,20926,0,575,4026,
+sp23,R1,Read H and V flatfiles,21540,21540,0,600,4151,"H 274 cols, V 276 cols, 21540 V rows"
+sp23,R2,"Sentinels (-999, blanks) -> missing",21540,21540,0,599,4150,H: 93157 cells replaced; V: 108216 cells replaced
+sp23,R3,Join H and V on RSN,21540,21540,0,599,4150,21087 records have V values
+sp23,R4,Lock EQID/SSN keys; keep RotD50 only,21540,21529,11,599,4150,RotD percentile: 50.0: 21529; nan: 11
+sp23,R5,Mask SA beyond usable period T_max = 1/LUF,21529,21529,0,599,4150,"H: 92907 SA values masked; 55 records without LUF (kept, unmasked); 389 LUF anomalies flagged | V: 92717 SA values masked; 502 records without LUF (kept, unmasked); 0 LUF anomalies flagged"
+sp23,R6,Drop failed H quality; mask failed V,21529,21158,371,595,4085,"H late P: nan: 16983; D: 3063; ?: 824; Y: 237; ? PT: 160; d: 124; D PT: 34; d PT: 29 | H spectra flag: 0.0: 21395; 1.0: 99; 2.0: 35 | H dropped: late P 'Y' 237, any failure 371 | V values masked for 470 records | late S 'Y' flagged 34"
+sp23,R7,Drop missing keys or all-missing H targets,21158,20926,232,575,4026,
+sp23,R8,CL1/CL2 class at CRJB = 5 km,20926,20926,0,575,4026,"source: TYPE (CRjb = 5) column | TYPE raw: C1: 17419; C2 - 0137: 1420; C2 - 0277: 701; C1f - 1186: 159; C2 - 0127: 95; C1f - 1002: 90; C2 - 0283: 77; C1f - 0280: 70 | CRJB missing 1, <0 0, =0 20925, (0,5) 0, >=5 0 | CL1: 18035; CL2: 2891"
+sp23,R10,ln(V/H) where H and V both usable,20926,20926,0,575,4026,20431 records with V/H
+sp23,R11,"Fill ZTOR (CY14), Z1.0 (CY14), Z2.5 (CB14) with flags",20926,20926,0,575,4026,ZTOR filled 0; Z1.0 filled 4796; Z2.5 filled 4988; VS30 class codes: 0: 7975; 2a_4b: 6185; 1: 2367; 2a_3a_4b_4c: 1610; 3b_4b_4c: 950; 2a_4b_4c: 657; 3b_4a_4b_4c: 554; 4b_4c: 312 (0 taken as measured)
+sp23,R9a,sp23: known ZTOR (not filled) and PGA,20926,20926,0,575,4026,
+sp23,R9b,sp23: Mw >= 3,20926,20921,5,574,4026,
+sp23,R9c,sp23: R_rup <= 300 km,20921,20029,892,574,3802,
+sp23,R9d,sp23: drop CL2 at CRJB = 5 km,20029,17188,2841,427,3709,
+sp23,R9e,sp23: multiple-event flag,17188,17188,0,427,3709,Not applied: column absent from the 2015 flatfile
+sp23,R9f,sp23: residual outliers > 4,17188,17188,0,427,3709,Not applied: needs a fitted model; handled at modelling stage
+sp23,R9g,sp23: events with >= 5 records,17188,16976,212,309,3615,
+sp23,R12,Freeze sp23.parquet,16976,16976,0,309,3615,

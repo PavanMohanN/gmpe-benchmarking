@@ -1,0 +1,31 @@
+﻿# Python & environments
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# PEER NGA-West2 raw flatfiles (DO NOT DISTRIBUTE)
+*.xlsx
+data/raw/
+
+# Large intermediate parquet caches (regenerated locally)
+data/processed/*.parquet
+results/baselines/*.parquet
+results/ml/*.parquet
+results/conformal/*.parquet
+
+# Local scratch / paper build temp
+*.aux
+*.log
+*.bbl
+*.blg
+*.out
+*.synctex.gz
+
+*.parquet
+
+*.pkl
