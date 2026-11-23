@@ -2,7 +2,7 @@
 
 # gmpe-bench
 
-**A leakage-free benchmark and calibrated-uncertainty toolkit for ground-motion models on NGA-West2.**
+**A leakage-aware benchmark and calibrated-uncertainty toolkit for ground-motion models on NGA-West2.**
 
 `gmpe-bench` turns the NGA-West2 flatfiles into an ML-ready dataset, freezes
 grouped benchmark splits with an automatic leakage audit, evaluates classical
