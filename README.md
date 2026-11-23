@@ -1,3 +1,5 @@
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://gmpe-benchmarking-app-iit-madras.streamlit.app/)
+
 # gmpe-bench
 
 **A leakage-free benchmark and calibrated-uncertainty toolkit for ground-motion models on NGA-West2.**
