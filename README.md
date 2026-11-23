@@ -29,9 +29,8 @@ commands below, and each stage writes a SHA-256 manifest.
 8. [Reproducibility](#reproducibility)
 9. [Repository structure](#repository-structure)
 10. [Testing](#testing)
-11. [Manuscript (Earthquake Spectra)](#manuscript-earthquake-spectra)
-12. [Data and code availability (manuscript text)](#data-and-code-availability)
-13. [Citation and licence](#citation-and-licence)
+11. [Data and code availability (manuscript text)](#data-and-code-availability)
+12. [Citation and licence](#citation-and-licence)
 
 ---
 
@@ -374,38 +373,6 @@ the Python API (`tests/test_api.py`) and the app's loaders and upload audit
 `AppTest` when Streamlit is installed). Tests that need the curated NGA-West2
 profile run when `data/processed/full.parquet` exists and are skipped otherwise.
 
-## Manuscript (Earthquake Spectra)
-
-`paper/` holds the manuscript and its electronic supplement in Wiley's NJD LaTeX template
-(`USG.cls`, numeric citations as in Wiley's own sample). Tables, figure environments and every
-number in the text are read from `results/paper/`, so the PDF always matches the last run.
-
-```bash
-gmpe-bench conformal --ablations      # the manuscript reports the four HSCP ablations
-gmpe-bench paper                      # tables, figures, numbers.tex, claims_check.csv
-cd paper
-xelatex main && bibtex main && xelatex main && xelatex main
-xelatex supplement && bibtex supplement && xelatex supplement && xelatex supplement
-python make_submission.py             # self-contained folder paper/submission/ for upload
-```
-
-- **Numbers.** `results/paper/numbers.tex` defines `\GB{key}` for every number in the text.
-  Table values are copied as strings from the table cells; figure-only values use the figure's
-  own formula. A key the results cannot supply prints `--` and is listed in `numbers_missing.txt`.
-- **Claims.** Each directional sentence in `main.tex` carries a claim ID in a comment
-  (`% [C07]`). `claims_check.csv` gives PASS / FAIL / NA for each one; rewrite any sentence whose
-  claim fails before submission.
-- **TeX requirements.** XeLaTeX (Wiley's recommendation) or pdfLaTeX, the `stix2` fonts,
-  `lineno`, `adjustbox`, `placeins`, and Ghostscript (XeLaTeX converts the template's EPS logos
-  with it). MiKTeX installs missing packages on first use; TeX Live users need
-  `texlive-fonts-extra` for `stix2`.
-- **Template fixes.** `paper/wileyNJD-Chicago.bst` is Wiley's file with small fixes marked
-  `gmpe-bench fix`: duplicate function definitions removed (BibTeX errors), `,, and` in author
-  lists, a stray ` .` after article titles, and DOIs printed (the shipped file ignored them).
-  `lettersp.sty` is Wiley's `LETTERSP.STY` renamed to lower case so it is found on Linux and macOS.
-- **Placeholders** to complete before submission: corresponding e-mail, funding,
-  acknowledgments, the repository URL and Zenodo DOI in `references.bib` (`gmpebench2026`),
-  and `\NTests` (the number of tests reported by `pytest -q`) in both `.tex` files.
 
 ## Data and code availability
 
