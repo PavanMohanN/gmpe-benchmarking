@@ -1,4 +1,4 @@
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://gmpe-benchmarking-app-iit-madras.streamlit.app/)
+[![Open Live Streamlit App](assets/streamlit-neon.svg)](https://gmpe-benchmarking-app-iit-madras.streamlit.app/)
 
 # gmpe-bench
 
